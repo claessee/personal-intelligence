@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "requirements_sha256": "eb25f7c6b40f9b6e9bdc6c80582e76d4f5f818763731d05191cad89fb21dc05b",
+  "general_retrieval_enabled": false,
+  "policy": {
+    "finance": "explicit_question_only",
+    "identity": "task_specific_need",
+    "email": "designated_provider_only",
+    "automatic_fallback": false
+  },
+  "integrations": [
+    {
+      "id": "files",
+      "kind": "local_files",
+      "provider": "native_files",
+      "readiness": "user_confirmed"
+    },
+    {
+      "id": "mail",
+      "kind": "provider",
+      "provider": "gmail",
+      "readiness": "unverified"
+    },
+    {
+      "id": "ledger",
+      "kind": "provider",
+      "provider": "demo_ledger",
+      "readiness": "unverified"
+    }
+  ],
+  "sources": [
+    {
+      "id": "health.patient_a.baseline",
+      "domain": "health",
+      "subjects": [
+        "patient_a"
+      ],
+      "role": "canonical",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "health.patient_a.baseline",
+      "instruction_refs": []
+    },
+    {
+      "id": "health.patient_a.original",
+      "domain": "health",
+      "subjects": [
+        "patient_a"
+      ],
+      "role": "original",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "health.patient_a.original",
+      "instruction_refs": []
+    },
+    {
+      "id": "health.patient_b.baseline",
+      "domain": "health",
+      "subjects": [
+        "patient_b"
+      ],
+      "role": "canonical",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "health.patient_b.baseline",
+      "instruction_refs": []
+    },
+    {
+      "id": "property.actions",
+      "domain": "property",
+      "subjects": [
+        "organization"
+      ],
+      "role": "canonical",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "property.actions",
+      "instruction_refs": []
+    },
+    {
+      "id": "travel.plan",
+      "domain": "travel",
+      "subjects": [
+        "household"
+      ],
+      "role": "canonical",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "travel.plan",
+      "instruction_refs": []
+    },
+    {
+      "id": "professional.notes",
+      "domain": "professional",
+      "subjects": [
+        "professional"
+      ],
+      "role": "canonical",
+      "kind": "file",
+      "integration_id": "files",
+      "location_ref": "professional.notes",
+      "instruction_refs": []
+    },
+    {
+      "id": "mail.correspondence",
+      "domain": "administration",
+      "subjects": [
+        "household",
+        "patient_a",
+        "patient_b",
+        "organization",
+        "professional"
+      ],
+      "role": "live",
+      "kind": "email",
+      "integration_id": "mail",
+      "location_ref": null,
+      "instruction_refs": []
+    },
+    {
+      "id": "finance.ledger",
+      "domain": "finance",
+      "subjects": [
+        "household"
+      ],
+      "role": "live",
+      "kind": "ledger",
+      "integration_id": "ledger",
+      "location_ref": null,
+      "instruction_refs": []
+    }
+  ],
+  "routes": [
+    {
+      "id": "health-baseline-a",
+      "domain": "health",
+      "intent": "baseline",
+      "subject": "patient_a",
+      "source_ids": [
+        "health.patient_a.baseline"
+      ],
+      "required_qualifiers": [
+        "topic_ref"
+      ],
+      "freshness": "dated",
+      "label_id": null
+    },
+    {
+      "id": "health-baseline-b",
+      "domain": "health",
+      "intent": "baseline",
+      "subject": "patient_b",
+      "source_ids": [
+        "health.patient_b.baseline"
+      ],
+      "required_qualifiers": [
+        "topic_ref"
+      ],
+      "freshness": "dated",
+      "label_id": null
+    },
+    {
+      "id": "health-newer-original",
+      "domain": "health",
+      "intent": "clinical_evidence",
+      "subject": "patient_a",
+      "source_ids": [
+        "health.patient_a.baseline",
+        "health.patient_a.original"
+      ],
+      "required_qualifiers": [
+        "topic_ref"
+      ],
+      "freshness": "dated",
+      "label_id": null
+    },
+    {
+      "id": "property-status",
+      "domain": "property",
+      "intent": "current_status",
+      "subject": "organization",
+      "source_ids": [
+        "property.actions",
+        "mail.correspondence"
+      ],
+      "required_qualifiers": [
+        "topic_ref"
+      ],
+      "freshness": "live",
+      "label_id": null
+    },
+    {
+      "id": "travel-booking",
+      "domain": "travel",
+      "intent": "booking",
+      "subject": "household",
+      "source_ids": [
+        "travel.plan",
+        "mail.correspondence"
+      ],
+      "required_qualifiers": [
+        "trip_ref",
+        "booking_ref"
+      ],
+      "freshness": "live",
+      "label_id": "journeys"
+    },
+    {
+      "id": "health-mail-a",
+      "domain": "health",
+      "intent": "correspondence",
+      "subject": "patient_a",
+      "source_ids": [
+        "mail.correspondence"
+      ],
+      "required_qualifiers": [
+        "topic_ref"
+      ],
+      "freshness": "live",
+      "label_id": "care"
+    },
+    {
+      "id": "work-mail",
+      "domain": "professional",
+      "intent": "correspondence",
+      "subject": "professional",
+      "source_ids": [
+        "mail.correspondence"
+      ],
+      "required_qualifiers": [
+        "project_ref",
+        "topic_ref"
+      ],
+      "freshness": "live",
+      "label_id": "projects"
+    },
+    {
+      "id": "financial-correspondence",
+      "domain": "finance",
+      "intent": "correspondence",
+      "subject": "household",
+      "source_ids": [
+        "mail.correspondence"
+      ],
+      "required_qualifiers": [
+        "account_ref",
+        "topic_ref",
+        "date_range"
+      ],
+      "freshness": "live",
+      "label_id": "receipts"
+    },
+    {
+      "id": "ledger-balance",
+      "domain": "finance",
+      "intent": "balance",
+      "subject": "household",
+      "source_ids": [
+        "finance.ledger"
+      ],
+      "required_qualifiers": [
+        "account_ref",
+        "topic_ref",
+        "date_range"
+      ],
+      "freshness": "live",
+      "label_id": null
+    }
+  ],
+  "labels": [
+    {
+      "id": "journeys",
+      "name": "Journeys Archive",
+      "source_id": "mail.correspondence",
+      "route_id": "travel-booking",
+      "coverage": "unknown"
+    },
+    {
+      "id": "care",
+      "name": "Care",
+      "source_id": "mail.correspondence",
+      "route_id": "health-mail-a",
+      "coverage": "unknown"
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "source_id": "mail.correspondence",
+      "route_id": "work-mail",
+      "coverage": "unknown"
+    },
+    {
+      "id": "receipts",
+      "name": "Receipts",
+      "source_id": "mail.correspondence",
+      "route_id": "financial-correspondence",
+      "coverage": "unknown"
+    }
+  ]
+}

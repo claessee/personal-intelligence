@@ -1,0 +1,22 @@
+# Configuration and evidence belong outside this repository.
+private/
+profiles/
+local-map.json
+profile.json
+requirements.json
+acceptance.json
+!examples/synthetic/**
+.env
+.env.*
+*_prev*
+__pycache__/
+*.pyc
+*.sqlite*
+*.db
+*.pdf
+*.docx
+*.xlsx
+*.key
+*.pem
+dist/
+.DS_Store

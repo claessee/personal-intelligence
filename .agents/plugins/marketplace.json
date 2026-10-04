@@ -1,0 +1,17 @@
+{
+  "name": "personal-intelligence-local",
+  "plugins": [
+    {
+      "name": "personal-intelligence",
+      "source": {
+        "source": "local",
+        "path": "./plugins/personal-intelligence"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

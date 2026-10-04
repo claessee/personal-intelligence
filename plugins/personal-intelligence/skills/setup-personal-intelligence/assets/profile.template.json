@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "requirements_sha256": "",
+  "general_retrieval_enabled": false,
+  "policy": {
+    "finance": "explicit_question_only",
+    "identity": "task_specific_need",
+    "email": "designated_provider_only",
+    "automatic_fallback": false
+  },
+  "integrations": [],
+  "sources": [],
+  "routes": [],
+  "labels": []
+}

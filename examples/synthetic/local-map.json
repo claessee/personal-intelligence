@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "mappings": [
+    {
+      "source_id": "health.patient_a.baseline",
+      "location": "synthetic://health.patient_a.baseline",
+      "instructions": {}
+    },
+    {
+      "source_id": "health.patient_a.original",
+      "location": "synthetic://health.patient_a.original",
+      "instructions": {}
+    },
+    {
+      "source_id": "health.patient_b.baseline",
+      "location": "synthetic://health.patient_b.baseline",
+      "instructions": {}
+    },
+    {
+      "source_id": "property.actions",
+      "location": "synthetic://property.actions",
+      "instructions": {}
+    },
+    {
+      "source_id": "travel.plan",
+      "location": "synthetic://travel.plan",
+      "instructions": {}
+    },
+    {
+      "source_id": "professional.notes",
+      "location": "synthetic://professional.notes",
+      "instructions": {}
+    }
+  ]
+}

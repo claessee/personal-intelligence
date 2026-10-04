@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "personal-intelligence",
+  "version": "0.1.0",
+  "description": "Map personal questions to authoritative sources with scoped discovery, privacy boundaries and inspectable evidence."
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_only": true,
+  "role": "provider_style_fixture_not_live",
+  "account_id": "demo-account",
+  "balance_status": "provisional_unreconciled",
+  "calculated_balance": 123.45,
+  "currency": "DEMO",
+  "recorded_balance": null,
+  "limitation": "Derived reconciliation amount only; no verified application balance."
+}
