@@ -41,25 +41,19 @@ Use this for personal records, trips, household documentation, professional proj
 
 ## Install and start
 
-The repository includes a local/repository plugin marketplace. With a current Codex client supporting custom marketplaces, register the downloaded repository:
+Version **0.1.0** is being prepared for its first release, planned for **2026-10-06**. The repository is private and the ZIPs are pre-release drafts; no GitHub release has been published.
 
-```sh
-codex plugin marketplace add /path/to/personal-intelligence
-```
+Use an authorized checkout or supplied archive and follow the [installation and onboarding guide](plugins/personal-intelligence/skills/setup-personal-intelligence/references/installation.md). Then start a chat in your intended workspace:
 
-Then use the desktop plugin UI to select/install Personal Intelligence. Registration alone is not proof of installation. A GitHub marketplace source can replace the local path after publication; use the repository's actual owner/name. Local-marketplace support can vary by client. No account connections or permissions are changed by these files.
+> Use $setup-personal-intelligence to map my existing information. Keep configuration outside Git, preserve my working integrations, and identify the capabilities I want before proposing setup changes.
 
-Alternatively, when your client supports direct skill directories, copy the two skill folders to its configured skill location. Each skill is self-contained; keep its supporting resources. See the official [skill guide](https://developers.openai.com/plugins/build/skills) and [plugin packaging guide](https://developers.openai.com/plugins/build/plugins).
+For macOS users wanting basic Calendar, Reminders, Contacts, Maps and Weather, **iMCP is the recommended starting integration**. Enable only the capabilities you choose. **cal-cli and RemCTL are optional advanced alternatives**; preserve them where they already work. Gmail and MoneyWiz remain separate optional integrations for email and financial questions. Personal Intelligence does not install any of them or connect accounts.
 
-Start a chat in your intended workspace and say:
+The [integration guide](plugins/personal-intelligence/skills/setup-personal-intelligence/references/integration-guide.md) covers installation, clients, permissions, supported operations, limitations and small scoped checks. File-based use works through existing authorized file-reading tools without another MCP. A configured route is not verified access; missing dependencies stay unavailable or unverified until checked.
 
-> Use $setup-personal-intelligence to map my existing information. Keep configuration outside Git, preserve my existing integrations, and capture all my requirements before building routes.
+Choose a private configuration directory, conventionally `$HOME/.config/personal-intelligence`, and tell the assistant where it is. Once configured:
 
-Choose a private configuration directory, conventionally `$HOME/.config/personal-intelligence`. Tell the assistant where it is, or put that location in the workspace's local instructions. The package does not search your home directory to discover it and does not automatically install a global instruction file.
-
-Once configured:
-
-> Use $personal-intelligence with my private profile to find the confirmation for my next trip.
+> Use $personal-intelligence with my private profile to find the confirmation for my selected trip.
 
 Normal invocation can also select the skill automatically. A missing privacy boundary still requires a focused question; a missing discoverable document/model/trip identifier usually requires narrow discovery first.
 
@@ -73,7 +67,7 @@ The setup skill supplies three blank JSON templates and a schema reference. They
 
 An empty template is not a completed setup. The profile binds a digest of the independent requirements; changes need explicit reconciliation. The digest detects an accidental mismatch, not a forged approval or simultaneous malicious edit. Provider readiness metadata is testimony, not proof of current access; record its date and evidence in the private setup note.
 
-Gmail priority labels are configurable and optional. No labels are prescribed for everyone. For Gmail questions, use its connected app/MCP exclusively; no browser, shell, local mail database or SMTP fallback. Other email providers can be recorded without labels; their dedicated provider route must be explicitly selected by the user. Version 0.1's generated label-query syntax is Gmail-specific.
+Gmail priority labels are configurable and optional. No labels are prescribed for everyone. For Gmail questions, use its connected app/MCP exclusively; no browser, shell, local mail database or SMTP fallback. Other email providers can be recorded without labels; their dedicated provider route must be explicitly selected by the user. Version 0.1.0's generated label-query syntax is Gmail-specific.
 
 Health requires one patient. Finance requires an explicit financial question and a bounded account/topic/date scope, including a deliberately stated aggregate-account scope when appropriate. Registration never grants background access. Identity, owner-private and other sensitive fields retain their separate task boundaries.
 
@@ -95,9 +89,15 @@ python3 scripts/check_release.py
 python3 plugins/personal-intelligence/skills/setup-personal-intelligence/scripts/profile_tools.py validate --requirements examples/synthetic/requirements.json --profile examples/synthetic/profile.json --local-map examples/synthetic/local-map.json
 ```
 
-The examples are entirely invented. Tests cover a fresh private setup, requirement omissions, separate patients, finance scope, labels with spaces, query injection, missing sources, source overrides and unavailable-provider metadata. They do not prove a live integration, model decision quality or filesystem confinement.
+The examples are entirely invented. Tests cover a fresh private setup, requirement omissions, separate patients, finance scope, labels with spaces, query injection, missing sources, source overrides and unavailable-provider metadata; archive tests check exact packaged content, checksums and collision refusal. They do not prove a live integration, successful real actions, model decision quality or filesystem confinement.
 
 [RELEASE-READINESS.md](RELEASE-READINESS.md) separates automated checks, a manual synthetic evidence exercise and checks that remain for a recipient. A real setup should pass one useful question in each selected domain, judged against actual sources. Store those answers and timings privately.
+
+## Keeping the rules useful
+
+The shared skill now requires an already authorized action to be executed and its saved identity and fields checked before success is reported. It retains corrections and approvals, checks uncertain outcomes before retries, and reports pending or failed operations accurately. See the [rule and invented regression cases](plugins/personal-intelligence/skills/personal-intelligence/references/authorized-actions.md); it grants no new access or permissions.
+
+The [rule-maintenance guide](plugins/personal-intelligence/skills/personal-intelligence/references/rule-maintenance.md) explains how a private correction becomes a generic improvement, how the release allowlist and manual review work, and how recipients update skills while retaining private configuration. There is no automatic anonymization or synchronization from personal instructions.
 
 ## Sharing
 

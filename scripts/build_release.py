@@ -16,12 +16,15 @@ def build(destination):
     groups={'personal-intelligence-v0.1.0-repository.zip':[(rel,'personal-intelligence/'+rel) for rel in inventory],
             'personal-intelligence-v0.1.0-plugin.zip':[(rel,'personal-intelligence/'+rel.removeprefix('plugins/personal-intelligence/')) for rel in inventory if rel.startswith('plugins/personal-intelligence/')]}
     groups['personal-intelligence-v0.1.0-plugin.zip'].append(('LICENSE','personal-intelligence/LICENSE'))
+    # Refuse collisions before writing either archive or its checksum file.
+    outputs=[destination/name for name in groups]+[destination/'SHA256SUMS.txt']
+    if any(target.exists() for target in outputs):raise ValueError('existing release output; preserve before replacing')
     for name,entries in groups.items():
         target=destination/name
         if target.exists():raise ValueError('existing release archive; preserve before replacing')
         with zipfile.ZipFile(target,'w',compression=zipfile.ZIP_DEFLATED) as archive:
             for rel,member in sorted(entries):
-                info=zipfile.ZipInfo(member,date_time=(2026,10,4,0,0,0))
+                info=zipfile.ZipInfo(member,date_time=(2026,10,6,0,0,0))
                 info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644<<16
                 archive.writestr(info,(ROOT/rel).read_bytes())
     checksum=destination/'SHA256SUMS.txt'
