@@ -4,6 +4,8 @@
 
 Personal Intelligence gives your assistant a structured way to find the right source, understand its authority, and answer from evidence — while your information and configuration remain yours.
 
+**Klarhet Studio:** [https://klarhetstudio.com](https://klarhetstudio.com)
+
 ![Your personal information: files, email, records, trips, projects and accounts](assets/readme/your-personal-information.png)
 
 ### Your information already exists.
