@@ -1,6 +1,6 @@
 # Install and onboard — 0.1.0
 
-The initial release is planned for 2026-10-06. The repository is private and no GitHub release or tag has been published as part of preparation. Existing ZIPs are pre-release drafts until the maintainer publishes a reviewed release. Use an authorized checkout or supplied archive; a private GitHub URL is not a public download.
+The initial release, v0.1.0, was published on 2026-10-05. The repository is public. Use a repository checkout or GitHub's source archive from the published release.
 
 ## Install the skills
 
