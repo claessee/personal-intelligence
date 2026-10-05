@@ -11,7 +11,7 @@ Preparation date: 2026-10-05. Planned first release: 2026-10-06. Version: 0.1.0.
 - Release files are an explicit allowlist. Structural/link checks and heuristic private-path/credential scans apply to that exact inventory. Backups, caches, Git metadata, populated profiles outside the invented example and source collections are excluded from archives. A heuristic scan is not a comprehensive secret detector; the intentionally small authored inventory is also reviewed for personal content.
 
 - The three supplied README graphics were visually reviewed for generic content and included unchanged. Only those exact PNG asset paths are allowed; the checker verifies PNG structure, dimensions and chunk checksums, and scans embedded bytes for the same heuristic private-path/credential markers. This does not replace visual review or comprehensively detect information within images.
-- The README preserves its framing, the three graphics and the separately maintained MoneyWiz reference. MoneyWiz remains optional and separate; private upstream content and live financial access were not inspected during this preparation.
+- The README preserves its framing, the three graphics and the separately maintained MoneyWiz reference. Its public repository and README were verified on 2026-10-05; the integration guide links its installation and reconciliation documentation. MoneyWiz remains optional and separate. No financial records were accessed and no live MoneyWiz checks were performed during this preparation.
 
 ## Manual synthetic evidence exercise
 
