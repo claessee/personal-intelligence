@@ -14,6 +14,20 @@ The problem isn't storing more information.
 
 It's knowing **where to look, what to trust, and what actually answers the question.**
 
+### Ask questions about your own life.
+
+Ask in normal language about trips, email, documents, appointments, projects and explicitly scoped financial questions.
+
+Personal Intelligence helps your assistant find the relevant source before answering.
+
+![Examples of questions Personal Intelligence can help answer across trips, email, documents, calendar, projects and finance](assets/readme/what-can-i-ask.png)
+
+### From question to evidence.
+
+Personal Intelligence works through your assistant.
+
+It helps identify the source that actually answers the question, compare authority, date and scope, and return an answer grounded in evidence.
+
 ![How Personal Intelligence works: from a question to relevant sources and an evidence-based answer](assets/readme/how-it-works.png)
 
 ### Personal intelligence, not another database.
@@ -24,7 +38,21 @@ It maps your existing sources and teaches the assistant how to use them.
 
 ![Privacy boundary: personal files, integrations, source map and configuration stay private; skills and generic tooling can be shared](assets/readme/privacy-boundary.png)
 
-## What you install
+### Your information stays yours.
+
+Your files, integrations, source map and configuration remain private. The reusable skills and generic validation tooling can be shared without sharing your personal configuration or source collection.
+
+### Your personal intelligence, wherever you are.
+
+Personal Intelligence can also be used through a remote assistant workflow.
+
+Remote use has been demonstrated with ChatGPT in the maintainer's setup. The exact behavior depends on the client, configured integrations and permissions; equivalent remote behavior in other assistants has not been verified by this release.
+
+![Personal Intelligence remote example: configured sources at home and a question asked through an assistant from another device](assets/readme/personal-intelligence-anywhere.png)
+
+## How to install
+
+### What you install
 
 Personal Intelligence is a pair of skills and a small, offline validation toolkit. Your information stays in its existing locations; your source map and configuration stay outside the shared repository.
 
@@ -41,9 +69,7 @@ Use this for personal records, trips, household documentation, professional proj
 
 ## Install and start
 
-Version **0.1.0** is being prepared for its first release, planned for **2026-10-06**. The repository is private and the ZIPs are pre-release drafts; no GitHub release has been published.
-
-Use an authorized checkout or supplied archive and follow the [installation and onboarding guide](plugins/personal-intelligence/skills/setup-personal-intelligence/references/installation.md). Then start a chat in your intended workspace:
+Clone this repository or download its ZIP, then follow the [installation and onboarding guide](plugins/personal-intelligence/skills/setup-personal-intelligence/references/installation.md). Then start a chat in your intended workspace:
 
 > Use $setup-personal-intelligence to map my existing information. Keep configuration outside Git, preserve my working integrations, and identify the capabilities I want before proposing setup changes.
 
@@ -95,7 +121,7 @@ The examples are entirely invented. Tests cover a fresh private setup, requireme
 
 ## Keeping the rules useful
 
-The shared skill now requires an already authorized action to be executed and its saved identity and fields checked before success is reported. It retains corrections and approvals, checks uncertain outcomes before retries, and reports pending or failed operations accurately. See the [rule and invented regression cases](plugins/personal-intelligence/skills/personal-intelligence/references/authorized-actions.md); it grants no new access or permissions.
+The personal-intelligence skill requires an already authorized action to be executed and its saved identity and fields checked before success is reported. It retains corrections and approvals, checks uncertain outcomes before retries, and reports pending or failed operations accurately. See the [rule and invented regression cases](plugins/personal-intelligence/skills/personal-intelligence/references/authorized-actions.md); it grants no new access or permissions.
 
 The [rule-maintenance guide](plugins/personal-intelligence/skills/personal-intelligence/references/rule-maintenance.md) explains how a private correction becomes a generic improvement, how the release allowlist and manual review work, and how recipients update skills while retaining private configuration. There is no automatic anonymization or synchronization from personal instructions.
 
@@ -103,6 +129,6 @@ The [rule-maintenance guide](plugins/personal-intelligence/skills/personal-intel
 
 Share the plugin ZIP or this generic repository. The plugin ZIP contains the plugin and its two skills; the repository ZIP also contains tests, synthetic examples and the marketplace. Neither should contain a user's configuration, source bodies, path map, credentials or personal evaluation history.
 
-Publishing the repository does not publish to the OpenAI plugin directory. Directory publication uses its separate submission/review process: [official submission guide](https://developers.openai.com/plugins/deploy/submission). Recipients connect their own existing tools and build their own source map.
+Recipients connect their own existing tools and build their own source map.
 
 MIT licensed. Contributions should use synthetic fixtures and preserve explicit scope, source authority, required-input completeness and unavailable-source honesty.

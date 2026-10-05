@@ -11,6 +11,8 @@ README_IMAGES={
     'assets/readme/your-personal-information.png',
     'assets/readme/how-it-works.png',
     'assets/readme/privacy-boundary.png',
+    'assets/readme/what-can-i-ask.png',
+    'assets/readme/personal-intelligence-anywhere.png',
 }
 
 def check_png(data):
