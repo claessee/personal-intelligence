@@ -1,6 +1,6 @@
 # Release readiness — 0.1.0
 
-Preparation date: 2026-10-05. Planned first release: 2026-10-06. Version: 0.1.0. Status: pre-release drafts; no GitHub release or tag is published by this preparation. Scope: generic skills, private configuration templates, offline tooling and entirely invented examples. The source package was authored separately from any personal configuration or evaluation history.
+Initial public release: 2026-10-05. Version: 0.1.0. Status: repository public; GitHub release and tag v0.1.0 published. Scope: generic skills, private configuration templates, offline tooling and entirely invented examples. The source package was authored separately from any personal configuration or evaluation history.
 
 ## Verified locally
 
@@ -30,7 +30,7 @@ Desktop/plugin installation, auto-selection behavior in a fresh client, live con
 
 The repository includes a GitHub Actions validation workflow. Hosted validation must be checked for the exact pushed commit; local results do not establish its result. The release is suitable for an initial workflow release with these limits stated; it is not a production filesystem-enforcement system or a verified live service.
 
-The author authorized initial publication to the private `claessee/personal-intelligence` repository under the included MIT license. Keep visibility private during the initial evaluation; the author will decide when to convert it to public. Use only the reviewed generic repository/archive, never a populated personal workspace. Public directory submission is a distinct later action.
+The `claessee/personal-intelligence` repository is public under the included MIT license, and release/tag `v0.1.0` was published on 2026-10-05. Use only the reviewed generic repository/archive, never a populated personal workspace. Public directory submission is a distinct later action.
 
 ## Initial package preparation checks
 
